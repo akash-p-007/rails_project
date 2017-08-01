@@ -26,7 +26,14 @@ RailsAdmin.config do |config|
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
-
+   def index
+    if params[:approved] == "false"
+      @users = User.where(approved: false)
+    else
+      @users = User.all
+    end
+  end
+  
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
