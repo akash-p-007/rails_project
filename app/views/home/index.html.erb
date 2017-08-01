@@ -3,14 +3,11 @@
 <% else %>
 	<%= link_to "app_dashboard_index_path", class: 'login-button' do %>Go to App<% end %>
 <% end %>
-<% if user_signed_in? %>
- 
-  <%= link_to('Edit registration', edit_user_registration_path) %>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
- 
-<% else %>
- 
-  <%= link_to('Register', new_user_registration_path)  %>
-  <%= link_to('Login', new_user_session_path)  %>  
- 
-<% end %>
+<ul class="nav nav-pills pull-right">
+  <% if user_signed_in? %>
+    <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+  <% else %>
+    <li><%= link_to "Sign in", new_user_session_path %></li>
+    <li><%= link_to "Sign up", new_user_registration_path %></li>
+  <% end %>
+</ul> 
